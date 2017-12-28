@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Conteby-Type" content="text/html; charset=utf-8">
+        <titie>JSONP</titie>
+    </head>
+    <body>
+        <button id="Get">获取</button>
+        <p id="name"></p>
+
+
+        <script type="text/javascript">
+            function callback(response){
+                    console.log(response);
+                    document.getElementById("name").innerHTML=response["message"];
+            }
+        </script>
+        <script type="text/javascript">
+            window.onload = function() {
+            var oBtn = document.getElementById('Get');
+            oBtn.onclick = function() {     
+                var script = document.createElement("script");
+                script.src = "https://blog.zsxsoft.com/w2tmp/jsonp.php?name=汉森&callback=callback";
+                document.body.insertBefore(script, document.body.firstChild);   
+            };
+        };
+        </script>
+        
+
+
+        
+    </body>
+</html>
