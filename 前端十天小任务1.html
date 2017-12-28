@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Conteby-Type" content="text/html; charset=utf-8">
+        <titie>GET</titie>
+    </head>
+    <body>
+        <button id="Get">获取</button>
+        <p id="name"></p>
+        <script>
+            //a=unescape("\u6c49\u68ee\u5feb\u5973\u88c5");
+            //document.write(a);
+            document.getElementById("Get").onclick=function(){
+                var getName=document.getElementById("name");
+
+                var header = new Headers({
+                    'Content-Type': 'text/html',
+                    'Accept-Charset': 'utf-8'
+                    });
+                
+                var req = new Request('https://blog.zsxsoft.com/w2tmp/get.php?name=汉森',{
+                    method:'GET',
+                    headers:'header'
+                    });
+
+                fetch(req).then(function(response){
+                    return response.json();
+                }).then(function(data){
+                    var t =document.getElementById("name");
+                    console.log(data);
+                    t.innerText=data["message"];
+                });
+            }
+        </script>
+    </body>
+</html>
